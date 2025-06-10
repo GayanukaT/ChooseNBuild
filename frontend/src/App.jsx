@@ -4,9 +4,9 @@ import Home from './pages/Home';
 import Login from './pages/Login';
 import Register from './pages/Register';
 
-import ClientDashboard from './pages/client/ClientDashboard';
-import ProviderDashboard from './pages/provider/ProviderDashboard';
-import AdminDashboard from './pages/admin/AdminDashboard';
+import ClientDashboard from './pages/client/Dashboard';
+import ProviderDashboard from './pages/provider/Dashboard';
+import AdminDashboard from './pages/admin/Dashboard';
 
 import Dashboard from './pages/Dashboard';
 
