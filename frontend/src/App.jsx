@@ -1,14 +1,14 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
-import Home from './pages/Home';
-import Login from './pages/Login';
-import Register from './pages/Register';
+import Home from 'pages/Home';
+import Login from 'pages/Login';
+import Register from 'pages/Register';
 
-import ClientDashboard from './pages/client/Dashboard';
-import ProviderDashboard from './pages/provider/Dashboard';
-import AdminDashboard from './pages/admin/Dashboard';
+import ClientDashboard from 'pages/client/Dashboard';
+import ProviderDashboard from 'pages/provider/Dashboard';
+import AdminDashboard from 'pages/admin/Dashboard';
 
-import Dashboard from './pages/Dashboard';
+import Dashboard from 'pages/Dashboard';
 
 function App() {
   return (
