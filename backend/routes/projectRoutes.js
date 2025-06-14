@@ -29,3 +29,13 @@ router.post('/create', verifyToken, async (req, res) => {
 });
 
 module.exports = router;
+
+router.get('/open', verifyToken, async (req, res) => {
+  try {
+    const openProjects = await Project.find({ status: 'open' });
+    res.json(openProjects);
+  } catch (err) {
+    console.error('Error fetching projects:', err);
+    res.status(500).json({ message: 'Server error' });
+  }
+});
