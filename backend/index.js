@@ -52,3 +52,6 @@ app.listen(PORT, () => {
 
 const projectRoutes = require('./routes/projectRoutes');
 app.use('api/projects', projectRoutes);
+
+const bidRoutes = require('./routes/bidRoutes');
+app.use('/api/bids', bidRoutes);
