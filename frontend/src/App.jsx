@@ -1,13 +1,13 @@
 import { Routes, Route } from 'react-router-dom';
 
-import Home from 'pages/Home';
-import Login from 'pages/Login';
-import Register from 'pages/Register';
-import Dashboard from 'pages/Dashboard';
+import Home from './pages/Home';
+import Login from './pages/Login';
+import Register from './pages/Register';
+import Dashboard from './pages/Dashboard';
 
-import ClientDashboard from 'pages/client/Dashboard';
-import ProviderDashboard from 'pages/provider/Dashboard';
-import AdminDashboard from 'pages/admin/Dashboard';
+import ClientDashboard from './pages/client/Dashboard';
+import ProviderDashboard from './pages/provider/Dashboard';
+import AdminDashboard from './pages/admin/Dashboard';
 
 import ProtectedRoute from './routes/ProtectedRoute';
 
