@@ -1,29 +1,21 @@
-const admin = require('../config/firebaseAdmin');
-const User = require('../models/User'); // assuming role stored in MongoDB
+const jwt = require('jsonwebtoken');
 
-const verifyToken = async (req, res, next) => {
-  const authHeader = req.headers.authorization;
+const protect = (req,res,next) => {
+    try{
+        const authHeader = req.header("Authorization");
+        
+        if (!authHeader || !authHeader.startsWith("Bearer ")) {
+            return res.status(401).json({ message: "Unauthorized, no token" });
+        }
 
-  if (!authHeader || !authHeader.startsWith('Bearer ')) {
-    return res.status(401).json({ message: 'Unauthorized: No token' });
-  }
+        const token = authHeader.split(" ")[1];
+        const decoded = jwt.verify(token, process.env.JWT_SECRET);
 
-  const idToken = authHeader.split(' ')[1];
-
-  try {
-    const decodedToken = await admin.auth().verifyIdToken(idToken);
-    req.user = decodedToken;
-
-    // Fetch role from DB
-    const user = await User.findOne({ uid: decodedToken.uid });
-    if (!user) return res.status(403).json({ message: 'User not found' });
-
-    req.user.role = user.role;
-    next();
-  } catch (error) {
-    console.error('Token verification error:', error);
-    return res.status(401).json({ message: 'Unauthorized' });
-  }
+        req.user = decoded.userId; 
+        next();
+    }catch(err){
+        res.status(401).json({ message: "Invalid token" });
+    }
 };
 
-module.exports = verifyToken;
+module.exports = protect;
