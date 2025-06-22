@@ -3,6 +3,7 @@ const cors = require('cors');
 const dotenv = require('dotenv');
 const mongoose = require('mongoose');
 const providerRoutes = require('./routes/providerRoutes');
+const clientRoutes = require('./routes/clientRoutes');
 
 dotenv.config();
 
@@ -19,6 +20,7 @@ mongoose
 
 // Routes
 app.use("/api/user",providerRoutes);
+app.use("/api/user",clientRoutes);
 
 
 // Start the server

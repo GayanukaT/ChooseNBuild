@@ -1,15 +1,27 @@
 const mongoose = require('mongoose');
+const bcrypt = require('bcryptjs');
 
 const clientSchema = new mongoose.Schema(
     {
-        drivername: { type:String, required:true },
-        vehiclenumber: { type:String, required:true},
-        accesscode: { type:String, required:true },
-        seller: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true }
+        fullname: { type: String, required: true },
+        email: { type: String, required: true, unique:true }, 
+        password: { type: String, required: true },
     },
     { timestamps: true }
 );
 
-const Client = mongoose.model("Client", clientSchema);
+// hash password before saving
+clientSchema.pre("save",async function(next){
+    if(!this.isModified("password")){
+        return next();
+    }
+    this.password = await bcrypt.hash(this.password, 10);
+    next();
+});
 
-module.exports = Client;
+// compare password
+clientSchema.methods.matchPassword = async function(enteredPassword){
+    return await bcrypt.compare(enteredPassword, this.password);
+}
+
+module.exports = mongoose.model('Client', clientSchema);
