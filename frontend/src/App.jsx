@@ -1,35 +1,33 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Login from "./pages/Login";
+import ClientRegister from "./pages/client/Register";
+import ProviderRegister from "./pages/provider/Register";
+import ClientDashboard from "./pages/client/ClientDashboard";
+import ProviderDashboard from "./pages/provider/ProviderDashboard";
+import RentToolsVehicles from "./pages/client/components/RentToolsVehicles";
+import GetMaterials from "./pages/client/components/GetMaterials";
+import GardenDesign from "./pages/client/components/GardenDesign";
+import FixedRenovate from "./pages/client/components/FixedRenovate";
+import BuildHome from "./pages/client/components/BuildHome";
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <Router>
+      <Routes>
+        <Route path="/" element={<Login />} />
+        <Route path="/client/register" element={<ClientRegister />} />
+        <Route path="/provider/register" element={<ProviderRegister />} />
+        <Route path="/providerdashboard" element={<ProviderDashboard />} />
+        <Route path="/clientdashboard" element={<ClientDashboard />} />
+        <Route path="/client/renttoolsandvehicle" element={<RentToolsVehicles />} />
+        <Route path="/client/getmaterials" element={<GetMaterials />} />
+        <Route path="/client/gardendesign" element={<GardenDesign />} />
+        <Route path="/client/fixandrenovate" element={<FixedRenovate />} />
+        <Route path="/client/buildyourhome" element={<BuildHome />} />
+      </Routes>
+    </Router>
+  );
 }
 
-export default App
+export default App;
