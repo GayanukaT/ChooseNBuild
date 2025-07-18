@@ -1,39 +1,46 @@
 import React from "react";
 
-const ClientHome = () => {
+const BuildHome = () => {
   return (
     <div className="p-6 space-y-6">
-      <h1 className="text-4xl font-bold text-gray-800">Welcome to ChooseNBuild</h1>
+      <h1 className="text-4xl font-bold text-gray-800">Welcome, Provider</h1>
       <p className="text-lg text-gray-600">
-        Your one-stop platform for renting tools, vehicles, construction materials, and accessing renovation services.
+        Manage your listings, track customer requests, and update your services.
       </p>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         <div className="border rounded-xl p-4 shadow-sm">
-          <h2 className="text-xl font-semibold text-gray-700">Rent Tools & Vehicles</h2>
+          <h2 className="text-xl font-semibold text-gray-700">Your Rentals</h2>
           <p className="text-sm text-gray-600">
-            Browse and rent high-quality tools and vehicles for your next project.
+            View and manage tools or vehicles you’ve listed for rent.
           </p>
         </div>
 
         <div className="border rounded-xl p-4 shadow-sm">
-          <h2 className="text-xl font-semibold text-gray-700">Get Construction Materials</h2>
+          <h2 className="text-xl font-semibold text-gray-700">Material Listings</h2>
           <p className="text-sm text-gray-600">
-            Find cement, bricks, steel, and more at the best prices.
+            Check or edit your construction materials available to clients.
           </p>
         </div>
 
         <div className="border rounded-xl p-4 shadow-sm">
-          <h2 className="text-xl font-semibold text-gray-700">Garden Design Services</h2>
+          <h2 className="text-xl font-semibold text-gray-700">Renovation Services</h2>
           <p className="text-sm text-gray-600">
-            Transform your outdoor space with custom garden design options.
+            Update your service descriptions, pricing, or availability.
           </p>
         </div>
 
         <div className="border rounded-xl p-4 shadow-sm">
-          <h2 className="text-xl font-semibold text-gray-700">Fix & Renovate</h2>
+          <h2 className="text-xl font-semibold text-gray-700">Design Projects</h2>
           <p className="text-sm text-gray-600">
-            Repair cracks, leaks, and renovate kitchens or bathrooms easily.
+            Add or manage garden and interior design offerings.
+          </p>
+        </div>
+
+        <div className="border rounded-xl p-4 shadow-sm">
+          <h2 className="text-xl font-semibold text-gray-700">Client Requests</h2>
+          <p className="text-sm text-gray-600">
+            Track incoming orders and requests from clients in real time.
           </p>
         </div>
       </div>
@@ -41,4 +48,4 @@ const ClientHome = () => {
   );
 };
 
-export default ClientHome;
+export default BuildHome;
