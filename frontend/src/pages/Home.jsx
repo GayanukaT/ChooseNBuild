@@ -16,7 +16,7 @@ const Home = () => {
             Choose<span className="text-gray-400">NBuild</span>
           </a>
           <div className="flex space-x-4">
-            <span className="text-orange-300">Already a member?</span>
+            <span className="text-orange-300">Have an Account?</span>
               <a
               href="/login"
               className="text-yellow-300 hover:text-orange-500 transition transform hover:scale-110"
@@ -46,7 +46,7 @@ const Home = () => {
               I Want to Get a Service
             </a>
             <a
-              href="/provider/dashboard"
+              href="/provider/register"
               className="bg-gray-800 hover:bg-gray-900 text-white font-bold py-3 px-6 rounded shadow-lg text-center transform hover:scale-105 transition duration-300 ease-in-out"
             >
               I Want to Provide a Service
