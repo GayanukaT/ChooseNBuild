@@ -16,17 +16,12 @@ const Home = () => {
             Choose<span className="text-gray-400">NBuild</span>
           </a>
           <div className="flex space-x-4">
-            <a
-              href="#"
+            <span className="text-orange-300">Already a member?</span>
+              <a
+              href="/login"
               className="text-yellow-300 hover:text-orange-500 transition transform hover:scale-110"
             >
               Login
-            </a>
-            <a
-              href="#"
-              className="text-yellow-300 hover:text-orange-500 transition transform hover:scale-110"
-            >
-              Sign Up
             </a>
           </div>
         </div>
@@ -45,13 +40,13 @@ const Home = () => {
 
           <div className="flex flex-col sm:flex-row gap-4 w-full md:w-auto">
             <a
-              href="/client/ClientDashboard"
+              href="/client/Dashboard"
               className="bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-3 px-6 rounded shadow-lg text-center transform hover:scale-105 transition duration-300 ease-in-out"
             >
               I'm a Contractor
             </a>
             <a
-              href="/provider/ProviderDashboard"
+              href="/provider/Dashboard"
               className="bg-gray-800 hover:bg-gray-900 text-white font-bold py-3 px-6 rounded shadow-lg text-center transform hover:scale-105 transition duration-300 ease-in-out"
             >
               I Need a Service
