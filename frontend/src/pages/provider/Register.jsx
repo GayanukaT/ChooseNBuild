@@ -34,17 +34,27 @@ function ProviderRegister() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col justify-center items-center bg-gray-50 px-4 py-12">
-      <h1 className="text-4xl font-extrabold text-gray-800 mb-10">ChooseNBuild Provider Registration</h1>
+    <div
+      className="min-h-screen flex flex-col justify-start items-center bg-cover bg-fixed px-4 py-12 leading-normal tracking-normal text-yellow-600"
+      style={{ backgroundImage: "url('/assets/header.jpg')" }}
+    >
+      {/* ChooseNBuild Logo Heading */}
+      <h1 className="text-4xl lg:text-5xl font-extrabold text-yellow-600 mb-10 mt-6">
+        Choose<span className="text-gray-400">NBuild</span>
+      </h1>
 
+      {/* Error Message */}
       {error && (
         <div className="text-yellow-800 bg-yellow-100 border border-yellow-500 px-4 py-3 rounded mb-6 w-full max-w-md text-center">
           {error}
         </div>
       )}
 
+      {/* Form */}
       <div className="bg-white p-8 rounded-2xl shadow-xl w-80 border border-gray-200">
-        <h2 className="text-xl font-bold text-yellow-700 mb-6">Provider Register</h2>
+        <h2 className="text-xl font-bold text-yellow-700 mb-6 text-center">
+          Provider Registration
+        </h2>
         <form onSubmit={handleRegister} className="space-y-6">
           <div className="relative z-0 w-full group">
             <input
@@ -144,6 +154,11 @@ function ProviderRegister() {
           </button>
         </form>
       </div>
+
+      {/* Footer */}
+      <footer className="w-full mt-16 py-6 text-sm text-center text-gray-400">
+        &copy; 2025 ChooseNBuild. All rights reserved.
+      </footer>
     </div>
   );
 }
