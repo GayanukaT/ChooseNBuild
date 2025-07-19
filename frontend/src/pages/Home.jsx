@@ -40,16 +40,16 @@ const Home = () => {
 
           <div className="flex flex-col sm:flex-row gap-4 w-full md:w-auto">
             <a
-              href="/client/Dashboard"
+              href="/client/dashboard"
               className="bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-3 px-6 rounded shadow-lg text-center transform hover:scale-105 transition duration-300 ease-in-out"
             >
-              I'm a Contractor
+              I Want to Get a Service
             </a>
             <a
-              href="/provider/Dashboard"
+              href="/provider/dashboard"
               className="bg-gray-800 hover:bg-gray-900 text-white font-bold py-3 px-6 rounded shadow-lg text-center transform hover:scale-105 transition duration-300 ease-in-out"
             >
-              I Need a Service
+              I Want to Provide a Service
             </a>
           </div>
         </div>
