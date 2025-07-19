@@ -4,7 +4,6 @@ import { useNavigate } from 'react-router-dom';
 
 function ProviderRegister() {
   const [businessname, setBusinessName] = React.useState('');
-  const [businesstype, setBusinessType] = React.useState('');
   const [email, setEmail] = React.useState('');
   const [password, setPassword] = React.useState('');
   const [confirmpassword, setConfirmPassword] = React.useState('');
@@ -23,7 +22,6 @@ function ProviderRegister() {
     try {
       await API.post('/user/provider/register', {
         businessname,
-        businesstype,
         email,
         password,
       });
@@ -71,24 +69,6 @@ function ProviderRegister() {
               peer-focus:scale-75 
               peer-focus:-translate-y-4">
               Business Name
-            </label>
-          </div>
-
-          <div className="relative z-0 w-full group">
-            <input
-              type="text"
-              value={businesstype}
-              onChange={(e) => setBusinessType(e.target.value)}
-              required
-              placeholder=" "
-              className="peer block w-full px-0 pt-5 pb-2 text-sm bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-yellow-600"
-            />
-            <label className="absolute text-sm text-gray-500 duration-300 transform -translate-y-4 scale-75 top-2 -z-10 origin-[0]
-              peer-placeholder-shown:scale-100 
-              peer-placeholder-shown:translate-y-2 
-              peer-focus:scale-75 
-              peer-focus:-translate-y-4">
-              Business Type
             </label>
           </div>
 
