@@ -4,7 +4,7 @@ const Home = () => {
   return (
     <div
       className="leading-normal tracking-normal text-yellow-600 bg-cover bg-fixed min-h-screen"
-      style={{ backgroundImage: "url('./assets/header.jpg')" }}
+      style={{ backgroundImage: "url('assets/header.jpg')" }}
     >
       {/* Navigation */}
       <div className="w-full container mx-auto py-6">
@@ -62,7 +62,7 @@ const Home = () => {
         {/* Right Column */}
         <div className="w-full md:w-3/5 p-4">
           <img
-          src="./assets/builder.png"
+          src="assets/builder.png"
           alt="Construction Illustration"
           className="mx-auto max-w-full md:max-w-md h-auto object-contain transform transition hover:scale-105 duration-700 ease-in-out"
           />
