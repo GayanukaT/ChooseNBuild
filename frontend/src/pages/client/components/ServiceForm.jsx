@@ -1,72 +1,93 @@
 import React, { useState } from 'react';
 import Navbar from './Navbar';
+import API from '../../../services/api';  
 
 export default function ServiceForm() {
-  const [form, setForm] = useState({
-    title: '',
-    description: '',
-    urgency: 'Medium',
-    location: '',
-    consultation: 'No',
-    phone: '',
-    email: '',
-  });
+  const [title, setTitle] = useState('');
+  const [description, setDescription] = useState('');
+  const [urgency, setUrgency] = useState('Medium');
+  const [location, setLocation] = useState('');
+  const [needconsumption, setNeedConsumption] = useState('No');
+  const [phone, setPhone] = useState('');
+  const [email, setEmail] = useState('');
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setForm({ ...form, [name]: value });
-  };
-
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log('Form submitted:', form);
-    // Add API submission logic here
+
+    const payload = {
+      title,
+      description,
+      urgency,
+      location,
+      needconsumption,
+      phone,
+      email,
+    };
+
+    try {
+      await API.post('/service/create', {
+        title,
+      description,
+      urgency,
+      location,
+      needconsumption,
+      phone,
+      email,
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        alert(data.message);
+        setTitle('');
+        setDescription('');
+        setUrgency('Medium');
+        setLocation('');
+        setNeedConsumption('No');
+        setPhone('');
+        setEmail('');
+      } else {
+        alert('Submission failed: ' + data.message);
+      }
+    } catch (error) {
+      console.error('Error:', error);
+      alert('Server error. Please try again later.');
+    }
   };
 
   return (
     <div className="min-h-screen bg-yellow-50 text-yellow-800 font-sans tracking-normal leading-normal">
       <Navbar />
-
       <main className="max-w-2xl mx-auto px-6 py-12">
         <h2 className="text-4xl font-bold text-center mb-8">Request New Service</h2>
-
-        <form
-          onSubmit={handleSubmit}
-          className="bg-white shadow-md rounded-2xl p-6 space-y-6"
-        >
-          {/* Title */}
+        <form onSubmit={handleSubmit} className="bg-white shadow-md rounded-2xl p-6 space-y-6">
           <div>
             <label className="block text-sm font-medium">Title</label>
             <input
               type="text"
-              name="title"
-              value={form.title}
-              onChange={handleChange}
+              value={title}
+              onChange={(e) => setTitle(e.target.value)}
               className="w-full mt-1 p-2 border border-gray-300 rounded-lg"
               required
             />
           </div>
 
-          {/* Description */}
           <div>
             <label className="block text-sm font-medium">Description / Notes</label>
             <textarea
-              name="description"
-              value={form.description}
-              onChange={handleChange}
+              value={description}
+              onChange={(e) => setDescription(e.target.value)}
               rows={4}
               className="w-full mt-1 p-2 border border-gray-300 rounded-lg"
               required
             />
           </div>
 
-          {/* Urgency */}
           <div>
             <label className="block text-sm font-medium">Urgency Level</label>
             <select
-              name="urgency"
-              value={form.urgency}
-              onChange={handleChange}
+              value={urgency}
+              onChange={(e) => setUrgency(e.target.value)}
               className="w-full mt-1 p-2 border border-gray-300 rounded-lg"
             >
               <option>Low</option>
@@ -75,20 +96,17 @@ export default function ServiceForm() {
             </select>
           </div>
 
-          {/* Location */}
           <div>
             <label className="block text-sm font-medium">Location / Site Address</label>
             <input
               type="text"
-              name="location"
-              value={form.location}
-              onChange={handleChange}
+              value={location}
+              onChange={(e) => setLocation(e.target.value)}
               className="w-full mt-1 p-2 border border-gray-300 rounded-lg"
               required
             />
           </div>
 
-          {/* Consultation */}
           <div>
             <label className="block text-sm font-medium">Need Consultation?</label>
             <div className="flex items-center gap-6 mt-2">
@@ -97,8 +115,8 @@ export default function ServiceForm() {
                   type="radio"
                   name="consultation"
                   value="Yes"
-                  checked={form.consultation === 'Yes'}
-                  onChange={handleChange}
+                  checked={needconsumption === 'Yes'}
+                  onChange={() => setNeedConsumption('Yes')}
                 />
                 Yes
               </label>
@@ -107,41 +125,36 @@ export default function ServiceForm() {
                   type="radio"
                   name="consultation"
                   value="No"
-                  checked={form.consultation === 'No'}
-                  onChange={handleChange}
+                  checked={needconsumption === 'No'}
+                  onChange={() => setNeedConsumption('No')}
                 />
                 No
               </label>
             </div>
           </div>
 
-          {/* Contact Number */}
           <div>
             <label className="block text-sm font-medium">Contact Number</label>
             <input
               type="tel"
-              name="phone"
-              value={form.phone}
-              onChange={handleChange}
+              value={phone}
+              onChange={(e) => setPhone(e.target.value)}
               className="w-full mt-1 p-2 border border-gray-300 rounded-lg"
               required
             />
           </div>
 
-          {/* Email */}
           <div>
             <label className="block text-sm font-medium">Email Address</label>
             <input
               type="email"
-              name="email"
-              value={form.email}
-              onChange={handleChange}
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
               className="w-full mt-1 p-2 border border-gray-300 rounded-lg"
               required
             />
           </div>
 
-          {/* Submit */}
           <div className="text-center">
             <button
               type="submit"

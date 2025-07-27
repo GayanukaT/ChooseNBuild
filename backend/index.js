@@ -4,6 +4,7 @@ const dotenv = require('dotenv');
 const mongoose = require('mongoose');
 const providerRoutes = require('./routes/providerRoutes');
 const clientRoutes = require('./routes/clientRoutes');
+const serviceRoute = require('./routes/serviceRoute');
 
 dotenv.config();
 
@@ -23,6 +24,7 @@ mongoose
 // Routes
 app.use("/api/user",providerRoutes);
 app.use("/api/user",clientRoutes);
+app.use("/api/service",serviceRoute);
 
 
 // Start the server
