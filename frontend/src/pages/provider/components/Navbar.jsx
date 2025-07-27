@@ -11,8 +11,8 @@ const Navbar = () => {
 
         <div className="space-x-8 text-sm md:text-base">
           <a href="" className="hover:text-yellow-300 transition-colors duration-300">Home</a>
-          <a href="/client/dashboard" className="hover:text-yellow-300 transition-colors duration-300">New Service</a>
-          <a href="/client/logout" className="hover:text-yellow-300 transition-colors duration-300">Log Out</a>
+          <a href="/provider/dashboard" className="hover:text-yellow-300 transition-colors duration-300">New Bid</a>
+          <a href="/provider/logout" className="hover:text-yellow-300 transition-colors duration-300">Log Out</a>
         </div>
       </div>
     </nav>
