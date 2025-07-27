@@ -11,7 +11,8 @@ import GetMaterials from "./pages/client/components/GetMaterials";
 import GardenDesign from "./pages/client/components/GardenDesign";
 import FixedRenovate from "./pages/client/components/FixedRenovate";
 import BuildHome from "./pages/client/components/BuildHome";
-import PrivateRoute from "./pages/client/components/PrivateRoute";
+import ServiceForm from "./pages/client/components/ServiceForm";
+
 function App() {
   return (
     <Router>
@@ -19,14 +20,15 @@ function App() {
         <Route path="/" element={<HomePage />} />
         <Route path="/login" element={<Login />} />
         <Route path="/client/register" element={<ClientRegister />} />
-        <Route path="/provider/dashboard" element={<PrivateRoute><ProviderDashboard /></PrivateRoute>} />
+        <Route path="/provider/register" element={<ProviderRegister />} />
+        <Route path="/provider/dashboard" element={<ProviderDashboard />} />
         <Route path="/client/dashboard" element={<ClientDashboard />} />
+        <Route path="/client/newservice" element={<ServiceForm />} />
         <Route path="/client/renttoolsandvehicle" element={<RentToolsVehicles />} />
         <Route path="/client/getmaterials" element={<GetMaterials />} />
         <Route path="/client/gardendesign" element={<GardenDesign />} />
         <Route path="/client/fixandrenovate" element={<FixedRenovate />} />
         <Route path="/client/buildyourhome" element={<BuildHome />} />
-        <Route path="/provider/register" element={<ProviderRegister />} />
       </Routes>
     </Router>
   );

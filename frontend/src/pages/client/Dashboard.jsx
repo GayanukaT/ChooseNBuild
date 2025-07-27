@@ -1,96 +1,171 @@
 import React, { useState } from 'react';
 import Navbar from './components/Navbar';
+import { useNavigate } from 'react-router-dom';
+
+function BuildingServices() {
+  return {
+    'Planning & Design': [
+      'Basic home layout',
+      '3D home preview',
+      'Interior ideas & moodboards',
+      'Garden or lawn planning',
+      'Soil test & land check',
+      'Building permits & approvals',
+      'Budget planning & estimate',
+    ],
+    'Site Preparation': [
+      'Clearing the plot',
+      'Land leveling',
+      'Marking & fencing',
+      'Initial digging',
+      'Temporary toilet & water setup',
+    ],
+    'Foundation & Structure': [
+      'Laying the foundation',
+      'Basement (if needed)',
+      'Steel & concrete frame',
+      'Walls & block laying',
+      'Roof base & slab casting',
+      'Staircase frame',
+    ],
+    'Electrical, Plumbing & Safety': [
+      'Wiring & switch points',
+      'Pipes & bathroom setup',
+      'Overhead or underground water tank',
+      'Waterproofing work',
+      'AC fitting & ducting',
+      'Fire alarm setup',
+    ],
+    'Exterior Work': [
+      'Roof tiles or sheets',
+      'Window & door fitting',
+      'Outside wall finish',
+      'Outside painting',
+      'Gutter or rainwater system',
+      'Porch / balcony',
+    ],
+    'Interior Work': [
+      'Wall plaster & smoothing',
+      'Tiles for floors & bathrooms',
+      'Paint for inside walls',
+      'Modular kitchen & chimney',
+      'Cupboards & wardrobes',
+      'Bathroom accessories',
+      'Light & fan fitting',
+    ],
+    'Final Cleaning & Setup': [
+      'House cleaning & dust removal',
+      'Basic furniture fitting',
+      'Appliance installation',
+      'Smart home setup',
+      'Pest control',
+      'Final walkthrough',
+    ],
+    'Extra Options': [
+      'Swimming pool',
+      'Solar power setup',
+      'Security cameras',
+      'Lift or elevator',
+      'Car parking or garage',
+      'Backup power or inverter',
+      'Boundary wall & gate',
+    ],
+  };
+}
+
+function RenovatingServices() {
+  return {
+    'Interior Upgrades': [
+      'Repainting walls',
+      'Floor replacement',
+      'False ceiling installation',
+      'New lighting setup',
+      'Modular kitchen upgrade',
+      'Bathroom renovation',
+    ],
+    'Structural Changes': [
+      'Room partitioning',
+      'Wall demolition',
+      'Balcony extension',
+      'Loft or storage addition',
+    ],
+    'Exterior Renovation': [
+      'Repainting outside walls',
+      'Replacing windows & doors',
+      'Waterproofing',
+      'Facade improvement',
+    ],
+    'Utility & Systems': [
+      'Electrical rewiring',
+      'Plumbing fixes',
+      'Water heater installation',
+      'Air conditioner setup',
+    ],
+    'Safety & Modernization': [
+      'Fire alarm installation',
+      'Smart switches',
+      'Security camera upgrades',
+      'Home automation systems',
+    ],
+  };
+}
+
+function RentingServices() {
+  return {
+    'Tools & Equipment': [
+      'Electric drill',
+      'Concrete mixer',
+      'Ladders and scaffolding',
+      'Power tools',
+      'Hand tools',
+    ],
+    'Heavy Machinery': [
+      'Excavator',
+      'Bulldozer',
+      'Forklift',
+      'Mini crane',
+      'Dump truck',
+    ],
+    'Temporary Structures': [
+      'Portable toilet',
+      'Site office cabin',
+      'Temporary fencing',
+      'Scaffolding systems',
+    ],
+    'Utility Rentals': [
+      'Water tank',
+      'Generator / Power backup',
+      'Lighting systems',
+      'Air conditioning units',
+    ],
+  };
+}
 
 const areas = [
   {
     name: 'Building',
     description: 'Start a new home or structure from the ground up.',
     image: '/assets/building.png',
-    services: buildingServices(),
+    services: BuildingServices(),
   },
   {
     name: 'Renovating',
     description: 'Improve or modernize an existing building.',
     image: '/assets/renovating.png',
-    services: {},
+    services: RenovatingServices(),
   },
   {
     name: 'Renting',
     description: 'Rent tools, machinery, or temporary structures.',
     image: '/assets/renting.png',
-    services: {},
+    services: RentingServices(),
   },
 ];
-
-function buildingServices() {
-  return {
-    'Planning & Design': [
-      'Home layout planning',
-      '3D home preview',
-      'Interior design ideas',
-      'Garden & landscape plan',
-      'Soil test & land survey',
-      'Building permits',
-      'Cost estimate & budget planning',
-    ],
-    'Site Preparation': [
-      'Land clearing',
-      'Digging and excavation',
-      'Temporary fencing & safety',
-      'Leveling the land',
-    ],
-    'Foundation & Structure': [
-      'Laying foundation',
-      'Building basement (optional)',
-      'Columns and beams',
-      'Walls & blockwork',
-      'Concrete slab casting',
-    ],
-    'Electric, Water & Plumbing': [
-      'Electrical wiring',
-      'Pipes and drainage',
-      'Waterproofing',
-      'Water tank setup',
-      'Air conditioning setup',
-      'Fire safety system',
-    ],
-    'Exterior Finishing': [
-      'Roof installation',
-      'Windows & doors',
-      'Exterior wall finish',
-      'Outside painting',
-      'Rainwater system',
-    ],
-    'Interior Work': [
-      'Interior wall plaster',
-      'Floor tiles & bathroom tiles',
-      'Painting inside walls',
-      'Modular kitchen fitting',
-      'Cupboards & shelves',
-      'Bathroom fittings',
-      'Lights & fans setup',
-    ],
-    'Final Touch & Cleaning': [
-      'Deep cleaning of house',
-      'Furniture & appliances setup',
-      'Home automation (optional)',
-      'Pest control',
-      'Final inspection & approval',
-    ],
-    'Extra Options': [
-      'Swimming pool',
-      'Solar power system',
-      'Security camera setup',
-      'Elevator or lift',
-      'Garage or car parking',
-      'Power backup / inverter',
-    ],
-  };
-}
 
 function ClientDashboard() {
   const [selectedArea, setSelectedArea] = useState(null);
   const [selectedServices, setSelectedServices] = useState([]);
+  const navigate = useNavigate();
 
   const toggleService = (service) => {
     setSelectedServices((prev) =>
@@ -109,6 +184,15 @@ function ClientDashboard() {
     );
   };
 
+  const handleContinue = () => {
+    if (selectedServices.length === 0) {
+      alert('Please select at least one service to continue.');
+      return;
+    }
+
+    navigate('/client/newservice', { state: { services: selectedServices } });
+  };
+
   return (
     <div className="min-h-screen bg-yellow-50 text-yellow-800 font-sans tracking-normal leading-normal">
       <Navbar />
@@ -118,7 +202,7 @@ function ClientDashboard() {
 
         {!selectedArea ? (
           <>
-            <p className="text-xl mb-12">Step 1: Choose what you want to do</p>
+            <p className="text-xl mb-12">Step 1: What would you like to do?</p>
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-8">
               {areas.map((area) => (
                 <div
@@ -140,7 +224,7 @@ function ClientDashboard() {
         ) : (
           <>
             <p className="text-xl mb-4">
-              Step 2: Select what you need under <strong>{selectedArea.name}</strong>
+              Step 2: Pick the services you need under <strong>{selectedArea.name}</strong>
             </p>
 
             <div className="space-y-8 text-left">
@@ -162,7 +246,7 @@ function ClientDashboard() {
                       <div
                         key={service}
                         onClick={() => toggleService(service)}
-                        className={`p-3 rounded-lg border cursor-pointer ${
+                        className={`p-3 rounded-lg border cursor-pointer transition ${
                           selectedServices.includes(service)
                             ? 'bg-yellow-300 border-yellow-600'
                             : 'bg-white border-gray-300'
@@ -184,7 +268,7 @@ function ClientDashboard() {
                 Back
               </button>
               <button
-                onClick={() => alert(`Selected services:\n${selectedServices.join('\n')}`)}
+                onClick={handleContinue}
                 className="px-4 py-2 bg-yellow-600 text-white rounded-lg"
               >
                 Continue
