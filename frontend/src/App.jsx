@@ -12,6 +12,7 @@ import GardenDesign from "./pages/client/components/GardenDesign";
 import FixedRenovate from "./pages/client/components/FixedRenovate";
 import BuildHome from "./pages/client/components/BuildHome";
 import ServiceForm from "./pages/client/components/ServiceForm";
+import ProviderForm from "./pages/provider/components/Update";
 
 function App() {
   return (
@@ -29,6 +30,7 @@ function App() {
         <Route path="/client/gardendesign" element={<GardenDesign />} />
         <Route path="/client/fixandrenovate" element={<FixedRenovate />} />
         <Route path="/client/buildyourhome" element={<BuildHome />} />
+        <Route path="/provider/update" element={<ProviderForm />} />
       </Routes>
     </Router>
   );
