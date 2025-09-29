@@ -27,28 +27,22 @@ export default function ServiceForm() {
     try {
       await API.post('/service/create', {
         title,
-      description,
-      urgency,
-      location,
-      needconsumption,
-      phone,
-      email,
+        description,
+        urgency,
+        location,
+        needconsumption: needconsumption === 'Yes',
+        phone,
+        email,
       });
 
-      const data = await response.json();
-
-      if (response.ok) {
-        alert(data.message);
-        setTitle('');
-        setDescription('');
-        setUrgency('Medium');
-        setLocation('');
-        setNeedConsumption('No');
-        setPhone('');
-        setEmail('');
-      } else {
-        alert('Submission failed: ' + data.message);
-      }
+      alert('Service request submitted successfully!');
+      setTitle('');
+      setDescription('');
+      setUrgency('Medium');
+      setLocation('');
+      setNeedConsumption('No');
+      setPhone('');
+      setEmail('');
     } catch (error) {
       console.error('Error:', error);
       alert('Server error. Please try again later.');

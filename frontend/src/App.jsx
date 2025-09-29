@@ -6,13 +6,9 @@ import ClientRegister from "./pages/client/Register";
 import ProviderRegister from "./pages/provider/Register";
 import ClientDashboard from "./pages/client/Dashboard";
 import ProviderDashboard from "./pages/provider/Dashboard";
-import RentToolsVehicles from "./pages/client/components/RentToolsVehicles";
-import GetMaterials from "./pages/client/components/GetMaterials";
-import GardenDesign from "./pages/client/components/GardenDesign";
-import FixedRenovate from "./pages/client/components/FixedRenovate";
-import BuildHome from "./pages/client/components/BuildHome";
 import ServiceForm from "./pages/client/components/ServiceForm";
 import ProviderForm from "./pages/provider/components/Update";
+import PrivateRoute from "./pages/client/components/PrivateRoute";
 
 function App() {
   return (
@@ -22,15 +18,10 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/client/register" element={<ClientRegister />} />
         <Route path="/provider/register" element={<ProviderRegister />} />
-        <Route path="/provider/dashboard" element={<ProviderDashboard />} />
-        <Route path="/client/dashboard" element={<ClientDashboard />} />
-        <Route path="/client/newservice" element={<ServiceForm />} />
-        <Route path="/client/renttoolsandvehicle" element={<RentToolsVehicles />} />
-        <Route path="/client/getmaterials" element={<GetMaterials />} />
-        <Route path="/client/gardendesign" element={<GardenDesign />} />
-        <Route path="/client/fixandrenovate" element={<FixedRenovate />} />
-        <Route path="/client/buildyourhome" element={<BuildHome />} />
-        <Route path="/provider/update" element={<ProviderForm />} />
+        <Route path="/provider/dashboard" element={<PrivateRoute><ProviderDashboard /></PrivateRoute>} />
+        <Route path="/client/dashboard" element={<PrivateRoute><ClientDashboard /></PrivateRoute>} />
+        <Route path="/client/newservice" element={<PrivateRoute><ServiceForm /></PrivateRoute>} />
+        <Route path="/provider/update" element={<PrivateRoute><ProviderForm /></PrivateRoute>} />
       </Routes>
     </Router>
   );

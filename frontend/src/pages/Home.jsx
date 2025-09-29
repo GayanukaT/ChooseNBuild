@@ -40,7 +40,7 @@ const Home = () => {
 
           <div className="flex flex-col sm:flex-row gap-4 w-full md:w-auto">
             <a
-              href="/client/dashboard"
+              href="/client/register"
               className="bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-3 px-6 rounded shadow-lg text-center transform hover:scale-105 transition duration-300 ease-in-out"
             >
               I Want to Get a Service

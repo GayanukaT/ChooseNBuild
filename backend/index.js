@@ -9,7 +9,6 @@ const serviceRoute = require('./routes/serviceRoute');
 dotenv.config();
 
 const app = express();
-app.use(express.json());
 
 // Middleware
 app.use(cors());
@@ -17,7 +16,7 @@ app.use(express.json());
 
 // Connect to mongoDB
 mongoose
-.connect(process.env.MONGODB_URI)
+.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/choosenbuild')
 .then(() => console.log("Mongo DB connected"))
 .catch((err) => console.log("Mongo DB error", err));
 
@@ -26,6 +25,10 @@ app.use("/api/user",providerRoutes);
 app.use("/api/user",clientRoutes);
 app.use("/api/service",serviceRoute);
 
+// Health check route
+app.get('/api/health', (req, res) => {
+  res.json({ status: 'OK', message: 'Server is running' });
+});
 
 // Start the server
 const PORT = process.env.PORT || 5000;

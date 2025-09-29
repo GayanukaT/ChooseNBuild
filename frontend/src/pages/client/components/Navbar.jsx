@@ -10,9 +10,9 @@ const Navbar = () => {
         </div>
 
         <div className="space-x-8 text-sm md:text-base">
-          <a href="" className="hover:text-yellow-300 transition-colors duration-300">Home</a>
+          <a href="/" className="hover:text-yellow-300 transition-colors duration-300">Home</a>
           <a href="/client/dashboard" className="hover:text-yellow-300 transition-colors duration-300">New Service</a>
-          <a href="/client/logout" className="hover:text-yellow-300 transition-colors duration-300">Log Out</a>
+          <button onClick={() => { localStorage.clear(); window.location.href = '/'; }} className="hover:text-yellow-300 transition-colors duration-300">Log Out</button>
         </div>
       </div>
     </nav>

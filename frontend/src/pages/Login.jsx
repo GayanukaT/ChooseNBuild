@@ -22,7 +22,7 @@ function Login() {
       const { token, user } = response.data;
       localStorage.setItem('token', token);
       localStorage.setItem('user', JSON.stringify(user));
-      navigate('/clientdashboard');
+      navigate('/client/dashboard');
     } catch (error) {
       setError('Login failed! Please check your credentials.');
     }
@@ -45,8 +45,11 @@ function Login() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col justify-center items-center bg-gray-50 px-4 py-12">
-      <h1 className="text-4xl font-extrabold text-gray-800 mb-10">ChooseNBuild Login Portal</h1>
+    <div
+      className="min-h-screen flex flex-col justify-center items-center bg-cover bg-fixed px-4 py-12 leading-normal tracking-normal text-yellow-600"
+      style={{ backgroundImage: "url('/assets/header.jpg')" }}
+    >
+      <h1 className="text-4xl font-extrabold text-yellow-600 mb-10">ChooseNBuild Login Portal</h1>
 
       {error && (
         <div className="text-yellow-800 bg-yellow-100 border border-yellow-500 px-4 py-3 rounded mb-6 w-full max-w-md text-center">

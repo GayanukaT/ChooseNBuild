@@ -25,21 +25,16 @@ export default function ProviderServiceForm() {
     };
 
     try {
-      const response = await API.post('/provider/service/create', payload);
-      const data = await response.json();
+      const response = await API.post('/service/create', payload);
 
-      if (response.ok) {
-        alert(data.message || 'Service offer submitted successfully!');
-        setServiceTitle('');
-        setServiceDescription('');
-        setServiceArea('');
-        setAvailability('');
-        setRate('');
-        setPhone('');
-        setEmail('');
-      } else {
-        alert('Submission failed: ' + (data.message || 'Unknown error.'));
-      }
+      alert('Service offer submitted successfully!');
+      setServiceTitle('');
+      setServiceDescription('');
+      setServiceArea('');
+      setAvailability('');
+      setRate('');
+      setPhone('');
+      setEmail('');
     } catch (error) {
       console.error('Error:', error);
       alert('Server error. Please try again later.');
